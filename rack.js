@@ -231,7 +231,7 @@ function loadValues(weights, defaultUnchecked, defaultBarWeight, defaultWeight) 
     var form = document.forms[0];
     var barWeight = Number(window.localStorage.getItem('barWeight'));
     form.barweight.value = barWeight === 0 ? defaultBarWeight : barWeight;
-    var weight = Number(window.localStorage.getItem('weight'));
+   // var weight = Number(window.localStorage.getItem('weight'));
     form.weight.value = weight === 0 ? defaultWeight : weight;
 }
 
