@@ -1,0 +1,46 @@
+body 
+{
+    font-family: sans-serif;
+    font-size: xx-large;
+}
+
+
+label
+{
+    font-size: xx-large;
+}
+
+input[type="number"]
+{
+    font-size: xx-large;
+    height: 55px;
+    
+}
+
+input[type="checkbox"]
+{
+    transform: scale(1.5);
+}
+
+button
+{
+    font-size: xx-large;
+}
+
+.plateLabel
+{
+    fill: white;
+    font-weight: bold;
+    font-size: 23px;
+    text-anchor: middle;
+}
+
+.plate
+{
+    fill: black;
+}
+
+#thebar
+{
+    fill: gray;
+}
