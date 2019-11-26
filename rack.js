@@ -170,6 +170,7 @@ function outputResultSVG() {
                 fillColor = "Blue"
             } else if (weight == 35 || weight == 15){
                 fillColor = "Yellow"
+                plateClass = "plateLabelDark"
             } else if (weight == 55 || (weightType == 'M' && weight == 25)){
                 fillColor = "Red"
             } else if (weight == 25 || (weightType == 'M' && weight == 10)){
