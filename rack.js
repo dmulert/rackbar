@@ -1,6 +1,6 @@
 var weights = [100, 55, 45, 35, 25, 10, 5, 2.5, 1.25, 1, .5, .25];
 var metricWeights = [50, 25, 20, 15, 10, 5, 2.5, 1.25, 1, .75, .50, .25];
-
+var weightType;
 var defaultUnchecked = [100, 55, 1.25];
 var metricDefaultUnchecked = [50, 25];
 
@@ -109,7 +109,7 @@ function outputResultSVG() {
         .append("svg")
         .attr("id", "svgresult")
         .attr("width", 200)
-        .attr("height", 450);
+        .attr("height", 650);
 
     if (!justBar && res.length === 0) {
         /* Not Rackable */
@@ -122,7 +122,7 @@ function outputResultSVG() {
         console.log(res);
 
         var barTop = 50;
-        var barBottom = 450;
+        var barBottom = 650;
         var barWidth = 10;
         var barHorizCenter = 100 + barWidth / 2;
 
@@ -138,20 +138,55 @@ function outputResultSVG() {
 
         function drawPlate(svg, y, weight) {
             var plateWidth = scaleWidth(weight)
+            var fillColor = getPlateInfo(weight);
+            
+
             svg.append("rect")
                 .attr("class", "plate")
                 .attr("width", plateWidth)
                 .attr("height", plateHeight)
+                .attr("fill", fillColor[0])
+                .attr("stroke", fillColor[1])
+                .attr("stroke-width", 1)
                 .attr("x", barHorizCenter - (plateWidth / 2))
                 .attr("y", y);
         }
 
         function drawPlateLabel(svg, x, y, label) {
+            var fillColor = getPlateInfo(weight);
             svg.append("text")
-                .attr("class", "plateLabel")
+                .attr("class", fillColor[2])
                 .attr("x", x)
                 .attr("y", y)
                 .text(label);
+        }
+
+        function getPlateInfo(weight){
+            console.log(weightType);
+            var strokeColor ;
+            var plateClass = "plateLabel";
+
+            if(weight == 45 || weight == 20){
+                fillColor = "Blue"
+            } else if (weight == 35 || weight == 15){
+                fillColor = "Yellow"
+            } else if (weight == 55 || (weightType == 'M' && weight == 25)){
+                fillColor = "Red"
+            } else if (weight == 25 || (weightType == 'M' && weight == 10)){
+                fillColor = "green"
+            }  else if ( (weightType == 'I' && weight == 10) || (weightType == 'M' && weight == 5)){
+                fillColor = "white"
+                strokeColor = "black"
+                plateClass = "plateLabelDark"
+            }  else if ((weightType == 'I' && weight == 5) || weight == 2.5){
+                fillColor = "black"
+            } else {
+                fillColor = "silver"
+                plateClass = "plateLabelDark"
+            }
+
+            return [fillColor,strokeColor,plateClass];
+        
         }
 
         var numPlates = res.length;
@@ -231,7 +266,7 @@ function loadValues(weights, defaultUnchecked, defaultBarWeight, defaultWeight) 
     var form = document.forms[0];
     var barWeight = Number(window.localStorage.getItem('barWeight'));
     form.barweight.value = barWeight === 0 ? defaultBarWeight : barWeight;
-   // var weight = Number(window.localStorage.getItem('weight'));
+    var weight = Number(window.localStorage.getItem('weight'));
     form.weight.value = weight === 0 ? defaultWeight : weight;
 }
 
@@ -246,10 +281,31 @@ function saveValues() {
     window.localStorage.setItem('weight', form.weight.value);
 }
 
+
+
 window.onload = function () {
     if (document.URL.endsWith("metric.html")) {
         loadValues(metricWeights, metricDefaultUnchecked, 20, 60);
+       var weightType = 'M'
+        
     } else {
         loadValues(weights, defaultUnchecked, 45, 135);
+       weightType = 'I';
+        
     }
+
+   
 };
+
+if (document.URL.endsWith("metric.html")) {
+   
+   var weightType = 'M'
+    
+} else {
+    
+   weightType = 'I';
+    
+}
+
+
+
