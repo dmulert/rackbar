@@ -1,4 +1,4 @@
-var weights = [100, 55, 45, 35, 25, 10, 5, 2.5, 1.25, 1, .5, .25];
+var weights = [100, 55, 45, 35, 25, 15, 10, 5, 2.5, 1.25, 1, .75, .5, .25];
 var metricWeights = [50, 25, 20, 15, 10, 5, 2.5, 1.25, 1, .75, .50, .25];
 var weightType;
 var defaultUnchecked = [100, 55, 1.25];
@@ -116,28 +116,39 @@ function outputResultSVG() {
         svg.append("text")
             .attr("x", 10)
             .attr("y", 200)
-            .text("Not Rackable!");
+            .text("You may need to find a lighter");
 
     } else {
         console.log(res);
 
         var barTop = 50;
+        var barLeft = 0; //New
+        var barRight = 100; //New
         var barBottom = 650;
         var barWidth = 10;
         var barHorizCenter = 100 + barWidth / 2;
 
+        svg.append("rect")
+        .attr("id", "thebar")
+        .attr("width", barRight) // barWidth
+        .attr("height", barWidth) //  barBottom - barTop
+        .attr("x", barLeft) //barHorizCenter - barWidth / 2
+        .attr("y", barTop);
+
+        /*
         svg.append("rect")
             .attr("id", "thebar")
             .attr("width", barWidth)
             .attr("height", barBottom - barTop)
             .attr("x", barHorizCenter - barWidth / 2)
             .attr("y", barTop);
-
-        var scaleWidth = d3.scaleLinear().domain([1.25, 100]).range([50, 300]);
-        var plateHeight = 20;
+*/
+        var scaleWidth = d3.scaleLinear().domain([.25, 5]).range([50, 300]);
+        var plateHeight = 1;
+        var plateWidth = 20;
 
         function drawPlate(svg, y, weight) {
-            var plateWidth = scaleWidth(weight)
+            var plateHeight = scaleWidth(weight)
             var fillColor = getPlateInfo(weight);
             
 
@@ -148,8 +159,8 @@ function outputResultSVG() {
                 .attr("fill", fillColor[0])
                 .attr("stroke", fillColor[1])
                 .attr("stroke-width", 1)
-                .attr("x", barHorizCenter - (plateWidth / 2))
-                .attr("y", y);
+                .attr("y", barHorizCenter - (plateWidth / 2))
+                .attr("X", y);
         }
 
         function drawPlateLabel(svg, x, y, label) {
@@ -193,11 +204,11 @@ function outputResultSVG() {
         var numPlates = res.length;
         for (var plate = 0; plate < numPlates; plate++) {
             var weight = res[plate];
-            drawPlate(svg, 5 + barTop + plate * 25, weight);
-            drawPlateLabel(svg, barHorizCenter, 5 + barTop + plate * 25 + plateHeight - 2, weight);
+            drawPlate(svg, 5 + barLeft + plate * 25, weight);
+            drawPlateLabel(svg, barHorizCenter, 5 + barLeft + plate * 25 + plateHeight - 2, weight);
 
-            drawPlate(svg, barBottom - (1 + plate) * 25, weight);
-            drawPlateLabel(svg, barHorizCenter, barBottom - (1 + plate) * 25 + plateHeight - 2, weight);
+            drawPlate(svg, barRight - (1 + plate) * 25, weight);
+            drawPlateLabel(svg, barHorizCenter, barRight - (1 + plate) * 25 + plateHeight - 2, weight);
 
         }
     }
