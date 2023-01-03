@@ -168,7 +168,7 @@ function outputResultSVG() {
         25: ["green", "white", "plateLabel"],
         10: ["white", "black", "plateLabelDark"],
         5: ["black", "white", "plateLabel"],
-        2.5: ["black", "white", "plateLabel"],
+        2.5: ["black", "white", "plateLabelDark"],
       };
 
       return plateInfo[weight] || ["silver", "white", "plateLabelDark"];
