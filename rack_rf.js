@@ -130,7 +130,7 @@ function outputResultSVG() {
       const plateWidth = scaleWidth(weight);
       //const { fillColor, strokeColor, plateClass } = getPlateInfo(weight);
 
-      let info = getPlateInfo(55);
+      let info = getPlateInfo(weight);
       let fillColor = info[0];
       let strokeColor = info[1];
       let plateClass = info[2];
