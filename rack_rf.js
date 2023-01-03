@@ -126,15 +126,14 @@ function outputResultSVG() {
     const scaleWidth = d3.scaleLinear().domain([1.25, 100]).range([50, 300]);
     const plateHeight = 20;
 
-    //Here, I have destructured the fillColor, strokeColor, and plateClass variables from the getPlateInfo function instead of using an array to hold them.
     function drawPlate(svg, y, weight) {
       const plateWidth = scaleWidth(weight);
       //const { fillColor, strokeColor, plateClass } = getPlateInfo(weight);
 
-      const info = getPlateInfo(55);
-      const fillColor = info[0];
-      const strokeColor = info[1];
-      const plateClass = info[2];
+      let info = getPlateInfo(55);
+      let fillColor = info[0];
+      let strokeColor = info[1];
+      let plateClass = info[2];
 
       svg
         .append("rect")
