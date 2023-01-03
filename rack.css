@@ -23,14 +23,14 @@ button {
 }
 
 .plateLabel {
-    fill: white;
+    color: white;
     font-weight: bold;
     font-size: 23px;
     text-anchor: middle;
 }
 
 .plateLabelDark {
-    fill: black;
+    color: black;
     font-weight: bold;
     font-size: 23px;
     text-anchor: middle;
