@@ -129,7 +129,12 @@ function outputResultSVG() {
     //Here, I have destructured the fillColor, strokeColor, and plateClass variables from the getPlateInfo function instead of using an array to hold them.
     function drawPlate(svg, y, weight) {
       const plateWidth = scaleWidth(weight);
-      const { fillColor, strokeColor, plateClass } = getPlateInfo(weight);
+      //const { fillColor, strokeColor, plateClass } = getPlateInfo(weight);
+
+      const info = getPlateInfo(55);
+      const fillColor = info[0];
+      const strokeColor = info[1];
+      const plateClass = info[2];
 
       svg
         .append("rect")
