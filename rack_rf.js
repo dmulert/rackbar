@@ -158,16 +158,16 @@ function outputResultSVG() {
     //   The keys are the weights and the values are arrays containing the fill color, stroke color, and class for each weight.
     function getPlateInfo(weight) {
       const plateInfo = {
-        45: ["Blue", undefined, "plateLabel"],
-        35: ["Yellow", undefined, "plateLabelDark"],
-        55: ["Red", undefined, "plateLabel"],
-        25: ["green", undefined, "plateLabel"],
+        45: ["Blue", "white", "plateLabel"],
+        35: ["Yellow", "white", "plateLabelDark"],
+        55: ["Red", "white", "plateLabel"],
+        25: ["green", "white", "plateLabel"],
         10: ["white", "black", "plateLabelDark"],
-        5: ["black", undefined, "plateLabel"],
-        2.5: ["black", undefined, "plateLabel"],
+        5: ["black", "white", "plateLabel"],
+        2.5: ["black", "white", "plateLabel"],
       };
 
-      return plateInfo[weight] || ["silver", undefined, "plateLabelDark"];
+      return plateInfo[weight] || ["silver", "white", "plateLabelDark"];
     }
 
     function drawPlatePair(svg, y, weight) {
