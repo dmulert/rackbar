@@ -137,7 +137,7 @@ function outputResultSVG() {
 
       svg
         .append("rect")
-        .attr("class", "plate")
+        .attr("class", plateClass)
         .attr("width", plateWidth)
         .attr("height", plateHeight)
         .attr("fill", fillColor)
