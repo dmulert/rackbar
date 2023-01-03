@@ -150,10 +150,15 @@ function outputResultSVG() {
     // I have added a weight parameter to the function signature and passed it to the getPlateInfo function to get the correct plate information for the given weight.
     // I also modified the function to use the plateInfo variable instead of fillColor to store the plate information returned from getPlateInfo.
     function drawPlateLabel(svg, x, y, label, weight) {
-      var plateInfo = getPlateInfo(weight);
+      //var plateInfo = getPlateInfo(weight);
+      let info = getPlateInfo(weight);
+      let fillColor = info[0];
+      let strokeColor = info[1];
+      let plateClass = info[2];
+
       svg
         .append("text")
-        .attr("class", plateInfo[2])
+        .attr("class", plateClass)
         .attr("x", x)
         .attr("y", y)
         .text(label);
