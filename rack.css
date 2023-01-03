@@ -36,12 +36,14 @@ button {
     text-anchor: middle;
 }
 
-/*
-.plate
-{
-    fill: black;
+
+.plate {
+    fill: white;
+    font-weight: bold;
+    font-size: 23px;
+    text-anchor: middle;
 }
-*/
+
 #thebar {
     fill: gray;
 }
