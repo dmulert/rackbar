@@ -128,8 +128,8 @@ function outputResultSVG() {
 
     function drawPlate(svg, y, weight) {
       const plateWidth = scaleWidth(weight);
-      const [fillColor, strokeColor, plateClass] = getPlateInfo(weight);
-      console.log(fillColor);
+      const [fillColor2, strokeColor2, plateClass2] = getPlateInfo(weight);
+      console.log(fillColor2);
       let info = getPlateInfo(weight);
       let fillColor = info[0];
       let strokeColor = info[1];
