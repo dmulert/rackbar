@@ -128,8 +128,8 @@ function outputResultSVG() {
 
     function drawPlate(svg, y, weight) {
       const plateWidth = scaleWidth(weight);
-      //const { fillColor, strokeColor, plateClass } = getPlateInfo(weight);
-
+      const [fillColor, strokeColor, plateClass] = getPlateInfo(weight);
+      console.log(fillColor);
       let info = getPlateInfo(weight);
       let fillColor = info[0];
       let strokeColor = info[1];
@@ -137,11 +137,11 @@ function outputResultSVG() {
 
       svg
         .append("rect")
-       // .attr("class", plateClass)
+        // .attr("class", plateClass)
         .attr("width", plateWidth)
         .attr("height", plateHeight)
         .attr("fill", fillColor)
-       // .attr("stroke", strokeColor)
+        // .attr("stroke", strokeColor)
         .attr("stroke-width", 1)
         .attr("x", barHorizCenter - plateWidth / 2)
         .attr("y", y);
