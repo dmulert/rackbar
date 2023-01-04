@@ -128,13 +128,8 @@ function outputResultSVG() {
 
     function drawPlate(svg, y, weight) {
       const plateWidth = scaleWidth(weight);
-      const [fillColor2, strokeColor2, plateClass2] = getPlateInfo(weight);
-      console.log(fillColor2);
-      let info = getPlateInfo(weight);
-      let fillColor = info[0];
-      let strokeColor = info[1];
-      let plateClass = info[2];
-
+      const [fillColor, strokeColor, plateClass] = getPlateInfo(weight);
+    
       svg
         .append("rect")
         // .attr("class", plateClass)
@@ -150,12 +145,8 @@ function outputResultSVG() {
     // I have added a weight parameter to the function signature and passed it to the getPlateInfo function to get the correct plate information for the given weight.
     // I also modified the function to use the plateInfo variable instead of fillColor to store the plate information returned from getPlateInfo.
     function drawPlateLabel(svg, x, y, label, weight) {
-      //var plateInfo = getPlateInfo(weight);
-      let info = getPlateInfo(weight);
-      let fillColor = info[0];
-      let strokeColor = info[1];
-      let plateClass = info[2];
-
+      const [fillColor, strokeColor, plateClass] = getPlateInfo(weight);
+   
       svg
         .append("text")
         .attr("class", plateClass)
