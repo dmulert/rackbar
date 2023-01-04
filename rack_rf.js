@@ -136,7 +136,7 @@ function outputResultSVG() {
         .attr("width", plateWidth)
         .attr("height", plateHeight)
         .attr("fill", fillColor)
-        // .attr("stroke", strokeColor)
+        .attr("stroke", strokeColor)
         .attr("stroke-width", 1)
         .attr("x", barHorizCenter - plateWidth / 2)
         .attr("y", y);
